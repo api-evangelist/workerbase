@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://workerbase.com/en/security
+notes: >-
+  Workerbase's security page claims GDPR and CCPA compliance with regular independent audits,
+  and encryption in transit and at rest (TLS; RSA4096/SHA256/AES256). The ISO/SOC/PCI/HIPAA/
+  FedRAMP/CSA STAR certifications named on the page are attributed to the CLOUD PROVIDERS
+  Workerbase runs on ("Cloud providers we use regularly undergo independent verification...
+  against" those standards), not certifications held by Workerbase GmbH itself — recorded
+  below as inherited, conforms: false for Workerbase directly. No public OpenAPI exists to
+  derive API-convention conformance (RFC 9457, JSON:API, OData, etc.).
+standards:
+- id: gdpr
+  conforms: true
+  evidence: security page — "compliance with privacy regulations such as GDPR and CCPA" with
+    regular independent audits
+- id: ccpa
+  conforms: true
+  evidence: security page — CCPA compliance claimed alongside GDPR
+- id: tls-encryption-in-transit
+  conforms: true
+  evidence: security page — TLS for all client requests; RSA4096/SHA256/AES256 at rest and in transit
+- id: iso-27001
+  conforms: false
+  inherited: true
+  evidence: security page attributes ISO/IEC 27001 verification to the underlying cloud providers,
+    not Workerbase GmbH
+- id: iso-27017
+  conforms: false
+  inherited: true
+  evidence: security page attributes ISO/IEC 27017 verification to the underlying cloud providers
+- id: soc-2
+  conforms: false
+  inherited: true
+  evidence: security page attributes SOC 1/2/3 verification to the underlying cloud providers
+- id: pci-dss
+  conforms: false
+  inherited: true
+  evidence: security page attributes PCI DSS verification to the underlying cloud providers
+- id: hipaa
+  conforms: false
+  inherited: true
+  evidence: security page attributes HIPAA verification to the underlying cloud providers
+- id: fedramp
+  conforms: false
+  inherited: true
+  evidence: security page attributes FedRAMP verification to the underlying cloud providers
+- id: csa-star
+  conforms: false
+  inherited: true
+  evidence: security page attributes CSA Star verification to the underlying cloud providers

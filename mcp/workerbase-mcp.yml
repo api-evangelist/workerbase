@@ -1,0 +1,87 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: npm @workerbase/sdk 1.0.6 (resource surface) + node-red-contrib-workerbase 1.1.0 (REST endpoints)
+notes: >-
+  No official Workerbase MCP server was found (npm, MCP registries, docs). The npm package
+  @cle-does-things/workerbase-mcp is an unrelated project (a Cloudflare-Worker knowledge base
+  also named "workerbase") and is explicitly NOT Workerbase GmbH. This is a CANDIDATE tool
+  list derived from the first-party @workerbase/sdk resource surface and the REST endpoints
+  used by node-red-contrib-workerbase; authentication is a per-instance access token
+  (accesstoken header) against the customer's Workerbase instance.
+server:
+  name: workerbase
+  transport: stdio
+tools:
+- name: list_tasks
+  description: List tasks (paginated; page/perpage/sort/order/fields/textSearch)
+  source_operation: '@workerbase/sdk tasks.list'
+- name: get_task
+  description: Get a task by id
+  source_operation: '@workerbase/sdk tasks.get'
+- name: update_task
+  description: Update a task
+  source_operation: '@workerbase/sdk tasks.update'
+- name: delete_task
+  description: Delete a task
+  source_operation: '@workerbase/sdk tasks.delete'
+- name: create_task
+  description: Create a task for a user or role
+  source_operation: node-red-contrib-workerbase POST /taskmanager/tasks
+- name: announce_task
+  description: Announce an existing task to workers
+  source_operation: node-red-contrib-workerbase POST /taskmanager/tasks/{taskId}/announce
+- name: list_users
+  description: List users
+  source_operation: '@workerbase/sdk users.list'
+- name: get_user
+  description: Get a user by id
+  source_operation: '@workerbase/sdk users.get'
+- name: create_user
+  description: Create a user
+  source_operation: '@workerbase/sdk users.create'
+- name: update_user
+  description: Update a user
+  source_operation: '@workerbase/sdk users.update'
+- name: message_user
+  description: Send a notification message to a user
+  source_operation: node-red-contrib-workerbase POST /usermanagement/users/{userId}/message
+- name: list_users_by_role
+  description: List the users holding a role
+  source_operation: node-red-contrib-workerbase GET /usermanagement/users/role/{roleId}
+- name: list_roles
+  description: List roles
+  source_operation: '@workerbase/sdk roles.list'
+- name: create_role
+  description: Create a role
+  source_operation: '@workerbase/sdk roles.create'
+- name: list_skills
+  description: List skills
+  source_operation: '@workerbase/sdk skills.list'
+- name: list_locations
+  description: List locations
+  source_operation: '@workerbase/sdk locations.list'
+- name: list_databases
+  description: List shopfloor databases
+  source_operation: '@workerbase/sdk databases.list'
+- name: list_database_items
+  description: List items in a shopfloor database
+  source_operation: '@workerbase/sdk databases.items.list'
+- name: create_database_item
+  description: Create an item in a shopfloor database
+  source_operation: '@workerbase/sdk databases.items.create'
+- name: list_connectors
+  description: List connectors
+  source_operation: '@workerbase/sdk connectors.list'
+- name: trigger_connector
+  description: Trigger a connector with a payload
+  source_operation: '@workerbase/sdk connectors.trigger'
+- name: list_functions
+  description: List deployed functions
+  source_operation: '@workerbase/sdk functions.list'
+- name: list_media
+  description: List media files
+  source_operation: '@workerbase/sdk media.list'
+- name: start_work_instruction
+  description: Start a work instruction task
+  source_operation: node-red-contrib-workerbase POST /workinstructions/tasks/{id}

@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: npm @workerbase/sdk 1.0.6 + node-red-contrib-workerbase 1.1.0 (first-party code)
+docs: https://workerbase.zendesk.com/hc/en-us (login required)
+notes: >-
+  No public OpenAPI exists, so this profile is taken from Workerbase's own published client
+  code. The platform API is per-tenant (the customer's Workerbase instance URL). The JavaScript
+  SDK (which runs inside Workerbase Functions) authenticates with an access token supplied via
+  the WB_ACCESS_TOKEN environment variable and sent as an `accesstoken` request header. The
+  Node-RED nodes authenticate the same way, obtaining tokens via a username/password login
+  endpoint. No OAuth 2.0 / OIDC surface was found (no /.well-known/openid-configuration or
+  oauth-authorization-server documents on the primary host).
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  api_key_name: accesstoken
+schemes:
+- name: accessToken
+  type: apiKey
+  in: header
+  parameter: accesstoken
+  sources:
+  - npm @workerbase/sdk (Config.accessToken = WB_ACCESS_TOKEN; header `accesstoken`)
+  - npm node-red-contrib-workerbase (credential node access token)
+- name: instanceLogin
+  type: http
+  scheme: login-endpoint
+  description: Username/password login that yields the access token used by API calls.
+  endpoint: POST {instanceUrl}/usermanagement/auth/login
+  sources:
+  - npm node-red-contrib-workerbase (workerbase-credentials.js)

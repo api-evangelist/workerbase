@@ -1,8 +1,32 @@
 aid: workerbase
 name: Workerbase
-description: Workerbase is a company surfaced as a portfolio company of point-nine and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
+description: >-
+  Workerbase is a Munich-based connected-worker platform — a frontline execution layer for
+  manufacturing that bridges ERP/MES planning and shopfloor operations with digital work
+  instructions, dynamic task orchestration, quality and maintenance workflows, material
+  logistics, an industrial smartwatch, and AI agents for the shopfloor. Its per-tenant
+  platform API is reachable through a first-party JavaScript SDK and Node-RED nodes published
+  on npm, covering tasks, users, roles, skills, locations, media, databases, connectors, and
+  functions; customer documentation lives in a login-gated help center.
 url: https://raw.githubusercontent.com/api-evangelist/workerbase/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/28139586?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,9 +35,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Manufacturing
+- Connected Worker
+- Frontline Operations
+- Digital Work Instructions
+- Quality Management
+- Maintenance
+- Industrial IoT
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,3 +54,39 @@ maintainers:
 common:
 - type: Website
   url: https://workerbase.com
+- type: Pricing
+  url: https://workerbase.com/en/pricing
+- type: Blog
+  url: https://workerbase.com/en/blog
+- type: PrivacyPolicy
+  url: https://workerbase.com/en/privacy-policy
+- type: Security
+  url: https://workerbase.com/en/security
+- type: Compliance
+  url: https://workerbase.com/en/security
+- type: GitHubOrganization
+  url: https://github.com/workerbase
+- type: Support
+  url: https://workerbase.zendesk.com/hc/en-us
+- type: Packages
+  url: packages/workerbase-packages.yml
+- type: SDKs
+  url: packages/workerbase-packages.yml
+- type: MCPServer
+  url: mcp/workerbase-mcp.yml
+- type: LLMsTxt
+  url: llms/workerbase-llms.txt
+- type: Conformance
+  url: conformance/workerbase-conformance.yml
+- type: Authentication
+  url: authentication/workerbase-authentication.yml
+- type: Conventions
+  url: conventions/workerbase-conventions.yml
+- type: DataModel
+  url: data-model/workerbase-data-model.yml
+- type: TrustCenter
+  url: security/workerbase-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/workerbase-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/workerbase-domain-security.yml

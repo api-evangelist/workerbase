@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+host: https://workerbase.com
+notes: >-
+  Probed the /.well-known/ discovery surface on the primary host. No discovery documents are
+  published; every probed path returned 404 (recorded below — absence is valid data). The
+  docs/developer subdomains (docs., developer., api., help., status.workerbase.com) do not
+  resolve; customer documentation lives in a login-gated Zendesk help center.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /llms.txt
+  status: 404

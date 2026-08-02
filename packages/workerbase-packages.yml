@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.npmjs.com/search?q=workerbase
+notes: >-
+  Workerbase publishes first-party packages on npm under the @workerbase scope and as
+  node-red-contrib-workerbase (publisher hmonadjem, Workerbase GmbH; repository hosted on the
+  company's self-managed GitLab at git.workerbase.io). The JavaScript SDK is documented in the
+  customer help center (login required). No first-party packages found on PyPI, Maven Central,
+  NuGet, pkg.go.dev, RubyGems, Packagist, or crates.io.
+packages:
+- language: javascript
+  registry: npm
+  name: '@workerbase/sdk'
+  url: https://www.npmjs.com/package/@workerbase/sdk
+  install: npm install @workerbase/sdk
+  official: true
+  latest: 1.0.6
+  last_published: '2024-04-17'
+  repository: git@git.workerbase.io:public-projects/workerbase-sdk.git
+  docs: https://workerbase.zendesk.com/hc/en-us/articles/14805311093277-Workerbase-SDK-for-JavaScript
+  description: Workerbase SDK for JavaScript — used inside Workerbase Functions to work with
+    tasks, users, roles, skills, locations, media, databases, connectors, functions, actions,
+    buttons, and workflow steps.
+- language: javascript
+  registry: npm
+  name: node-red-contrib-workerbase
+  url: https://www.npmjs.com/package/node-red-contrib-workerbase
+  install: npm install node-red-contrib-workerbase
+  official: true
+  latest: 1.1.0
+  last_published: '2022-05-11'
+  description: Node-RED nodes for the Workerbase system — create/announce tasks, send user
+    notifications, and trigger work instructions against a Workerbase instance REST API.

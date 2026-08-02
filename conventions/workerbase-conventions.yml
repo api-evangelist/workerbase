@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: derived
+source: npm @workerbase/sdk 1.0.6 (dist/types + dist/utils, first-party code)
+notes: >-
+  Derived from the published first-party JavaScript SDK; Workerbase publishes no public API
+  conventions documentation (help center is login-gated). No idempotency-key contract was
+  found in the SDK or Node-RED code, so none is asserted.
+authentication:
+  style: per-tenant access token in `accesstoken` header
+  reference: authentication/workerbase-authentication.yml
+pagination:
+  style: page-based
+  params:
+    page: page number
+    perpage: entries per page (SDK default 1000)
+  related_params:
+    sort: sort field
+    order: desc | asc
+  source: '@workerbase/sdk types/pagination.d.ts (ListOptions), utils/constants.js (ENTRIES_PER_PAGE=1000)'
+sparse_fields:
+  supported: true
+  param: fields
+  source: '@workerbase/sdk ListOptions.fields'
+search:
+  supported: true
+  param: textSearch
+  source: '@workerbase/sdk ListOptions.textSearch'
+expansion:
+  supported: true
+  param: populate (boolean)
+  source: '@workerbase/sdk ListOptions.populate'
+identifiers:
+  primary: _id (string)
+  external: externalId supported on tasks, users, roles, locations, database items for
+    ERP/MES correlation
+metadata:
+  envelope: meta (MetaFields — createdAt, updatedAt, startedAt, doneAt, schemaVersion)
+  source: '@workerbase/sdk types/MetaFields.d.ts'
+versioning:
+  api_version: v1
+  source: '@workerbase/sdk utils/constants.js (API_VERSION = v1)'
+client_identification:
+  user_agent: workerbase-sdk (<version>) sent by the SDK
+idempotency:
+  supported: false
+  evidence: no idempotency-key header or parameter found in first-party SDK or Node-RED code
+service_surface:
+  style: per-tenant microservice paths
+  services:
+  - /taskmanager (tasks, announce)
+  - /usermanagement (auth, users, roles, messages)
+  - /workinstructions (work instruction tasks)
+  source: npm node-red-contrib-workerbase endpoint usage
+cross_links:
+  authentication: authentication/workerbase-authentication.yml
+  data_model: data-model/workerbase-data-model.yml
+  mcp_candidate: mcp/workerbase-mcp.yml

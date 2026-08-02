@@ -1,0 +1,92 @@
+generated: '2026-07-21'
+method: derived
+source: npm @workerbase/sdk 1.0.6 dist/types/*.d.ts (first-party TypeScript definitions)
+notes: >-
+  Entity-relationship graph derived from the published SDK type definitions (no public
+  OpenAPI exists). All entities share `_id` plus a `meta` envelope (createdAt/updatedAt/
+  startedAt/doneAt/schemaVersion); most support an `externalId` for ERP/MES correlation.
+entities:
+- name: Task
+  key_fields: [_id, externalId, title, headline, description, priority, tags, payload]
+- name: User
+  key_fields: [_id, externalId, firstName, lastName, email, department, language, roles,
+    skills, location, isDeveloper, superUser]
+- name: Role
+  key_fields: [_id, externalId, name, description, deviceApps, apps, accessRights, users,
+    workinstructions]
+- name: Skill
+  key_fields: [_id, name, level]
+- name: Location
+  key_fields: [_id, externalId, name, parts]
+- name: LocationLevel
+  key_fields: [_id, name]
+- name: Media
+  key_fields: [_id, filename, contentType]
+- name: Database
+  key_fields: [_id, name, slug, columns, readOnlyRoles, readWriteRoles]
+- name: DatabaseItem
+  key_fields: [_id, externalId, payload]
+- name: Connector
+  key_fields: [_id, name, project, type, initialized, variables]
+- name: Function
+  key_fields: [_id, name, project, files, deployed, deployedVersion]
+- name: Step
+  notes: work-instruction step union — Info (text/photo/video/audio/pdf/qr/webview/status/
+    location-direction), Input (text/number/photo/video/audio/barcode/checkbox/button/tile/
+    value lists, noise level, location), Layout (flex)
+- name: Action
+  notes: task flow actions — close, finish, suspend, next step/task/work-instruction,
+    next-by-function
+relationships:
+- from: User
+  to: Role
+  type: belongs_to_many
+  via: roles[]
+- from: User
+  to: Skill
+  type: has_many
+  via: skills[]
+- from: User
+  to: Location
+  type: belongs_to
+  via: location
+- from: Role
+  to: WorkInstruction
+  type: has_many
+  via: workinstructions[]
+- from: Task
+  to: User
+  type: assigned_to
+  via: user / role announce targets (node-red-contrib-workerbase task creation)
+- from: Location
+  to: LocationLevel
+  type: composed_of
+  via: parts[].level
+- from: Database
+  to: DatabaseItem
+  type: has_many
+  via: databases.items sub-resource
+- from: Database
+  to: Role
+  type: authorizes
+  via: readOnlyRoles[] / readWriteRoles[]
+- from: Connector
+  to: Project
+  type: belongs_to
+  via: project
+- from: Function
+  to: Project
+  type: belongs_to
+  via: project
+- from: Database
+  to: User
+  type: references
+  via: columns[].type == User
+- from: Database
+  to: Media
+  type: references
+  via: columns[].type == Media
+- from: Database
+  to: Location
+  type: references
+  via: columns[].type == Location
