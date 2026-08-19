@@ -2,13 +2,11 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: npm @workerbase/sdk 1.0.6 (resource surface) + node-red-contrib-workerbase 1.1.0 (REST endpoints)
-notes: >-
-  No official Workerbase MCP server was found (npm, MCP registries, docs). The npm package
-  @cle-does-things/workerbase-mcp is an unrelated project (a Cloudflare-Worker knowledge base
-  also named "workerbase") and is explicitly NOT Workerbase GmbH. This is a CANDIDATE tool
-  list derived from the first-party @workerbase/sdk resource surface and the REST endpoints
-  used by node-red-contrib-workerbase; authentication is a per-instance access token
-  (accesstoken header) against the customer's Workerbase instance.
+notes: No official Workerbase MCP server was found (npm, MCP registries, docs). The npm package @cle-does-things/workerbase-mcp
+  is an unrelated project (a Cloudflare-Worker knowledge base also named "workerbase") and is explicitly
+  NOT Workerbase GmbH. This is a CANDIDATE tool list derived from the first-party @workerbase/sdk resource
+  surface and the REST endpoints used by node-red-contrib-workerbase; authentication is a per-instance
+  access token (accesstoken header) against the customer's Workerbase instance.
 server:
   name: workerbase
   transport: stdio
@@ -85,3 +83,9 @@ tools:
 - name: start_work_instruction
   description: Start a work instruction task
   source_operation: node-red-contrib-workerbase POST /workinstructions/tasks/{id}
+deployment:
+  mode: none
+  verified: derived
+  tools: 24
+  checked: '2026-08-12'
+  source: catalog MCP census
